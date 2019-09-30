@@ -12,10 +12,8 @@ import Tienda.Tienda;
  * @author Sebastián Sanchez
  */
 public class Main {
-
-    public static void Main(String[]args) {
-        Tienda menu = new Tienda();
+    public static void main (String[]args){
+        Tienda menu=new Tienda();
         menu.menu();
     }
-    
 }

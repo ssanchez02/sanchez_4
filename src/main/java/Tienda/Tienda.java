@@ -23,7 +23,7 @@ public class Tienda {
      *
      * @return objeto tipo Persona con sus atributos
      */
-    public Persona crearUsuario() {
+    public static Persona crearUsuario() {
         String nombre = leerNombre();
         String rut = leerRut();
         String direccion = leerDireccion();
@@ -36,7 +36,7 @@ public class Tienda {
      *
      * @return nombre completo
      */
-    public String leerNombre() {
+    public static String leerNombre() {
         System.out.println("Ingrese nombre de la persona");
         String nombre = recibirTexto();
         System.out.println("Ingrese apellido de la persona");
@@ -54,7 +54,7 @@ public class Tienda {
      *
      * @return String recibido y validado
      */
-    public String recibirTexto() {
+    public static String recibirTexto() {
         Scanner teclado = new Scanner(System.in);
         String texto = " ";
         try {
@@ -71,7 +71,7 @@ public class Tienda {
      *
      * @return rut de la persona
      */
-    public String leerRut() {
+    public static String leerRut() {
         String rut = " ";
         System.out.println("Ingrese su rut con guión(-)");
         rut = recibirTexto();
@@ -90,11 +90,12 @@ public class Tienda {
      * @param rut que será validado
      * @return rut validado
      */
-    public boolean validarRut(String rut) {
+    public static boolean validarRut(String rut) {
         boolean validacion = false;
         try {
             rut = rut.toUpperCase();
             rut = rut.replace(".", "");
+            rut = rut.replace("-", "");
             int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
             char dv = rut.charAt(rut.length() - 1);
             int m = 0;
@@ -116,7 +117,7 @@ public class Tienda {
      *
      * @return la direccion completa
      */
-    public String leerDireccion() {
+    public static String leerDireccion() {
         String direccion = " ";
         System.out.println("Ingrese su direccion de domicilio (Calle,Número,Ciudad,Región) ");
         System.out.println("Ingrese la calle del domicilio");
@@ -136,7 +137,7 @@ public class Tienda {
      *
      * @return numero de la calle validado
      */
-    public int leerNumeroDireccion() {
+    public static int leerNumeroDireccion() {
         int numero = 0;
         Scanner sc = new Scanner(System.in);
         try {
@@ -157,7 +158,7 @@ public class Tienda {
      * @param ruta del archivo a leer
      * @return texto dentro del archivo
      */
-    public String leerArchivo(String ruta) {
+    public static String leerArchivo(String ruta) {
         String texto = "";
         try {
             BufferedReader bf = new BufferedReader(new FileReader(ruta));
@@ -180,7 +181,7 @@ public class Tienda {
      * @param texto que se agrega en el archivo
      * @return texto agregado
      */
-    public String agregarTexto(String ruta, String texto) {
+    public static String agregarTexto(String ruta, String texto) {
         try {
             FileWriter archivo = new FileWriter(ruta, true);
             archivo.append(texto);
@@ -196,7 +197,7 @@ public class Tienda {
     /**
      * Método que inicia el programa
      */
-    public void menu() {
+    public static  void menu() {
         Persona usuario = crearUsuario();
         agregarTexto("Usuarios.csv", usuario.getNombre() + "," + usuario.getRut() + "," + usuario.getDireccion());
         leerArchivo("Usuarios.csv");
