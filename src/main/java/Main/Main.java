@@ -5,6 +5,8 @@
  */
 package Main;
 
+import Tienda.Tienda;
+
 /**
  *
  * @author Sebastián Sanchez
@@ -12,7 +14,8 @@ package Main;
 public class Main {
 
     public static void Main(String[]args) {
-        Tienda usuarios = new Tienda();
+        Tienda menu = new Tienda();
+        menu.menu();
     }
     
 }
